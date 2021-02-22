@@ -158,7 +158,9 @@ public class ChessPanel extends JPanel {
         playerTurn.setText("White");
         selectedPiece.setText("none");
         blackTurn = false;
+        chosenCell = null;
         init();
+        unhighlight();
     }
 
 }
