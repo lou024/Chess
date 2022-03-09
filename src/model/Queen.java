@@ -3,6 +3,7 @@ package model;
 import java.util.ArrayList;
 
 public class Queen extends ChessPiece {
+
     public Queen(PieceColor color, int plus) {
         super(color, false, plus);
         this.type = "Queen";
@@ -69,4 +70,5 @@ public class Queen extends ChessPiece {
         }
         return out;
     }
+
 }

@@ -3,12 +3,13 @@ package model;
 import java.util.ArrayList;
 
 abstract class ChessPiece {
+
     String type;
     PieceColor color;
     boolean firstMove;
     final int plus;
 
-    protected ChessPiece(PieceColor color, boolean firstMove, int plus) {
+    public ChessPiece(PieceColor color, boolean firstMove, int plus) {
         this.color = color;
         this.firstMove = firstMove;
         this.plus = plus;
@@ -28,4 +29,5 @@ abstract class ChessPiece {
         if(type == null) return "";
         return "Type: " + type + " Color: " + color;
     }
+
 }

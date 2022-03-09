@@ -24,4 +24,5 @@ public class Pawn extends ChessPiece {
                 && color != board[row+plus][column+1].pieceInCell.color)out.add(new Pair<>(row+plus, column+1));
         return out;
     }
+
 }

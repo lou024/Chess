@@ -3,6 +3,7 @@ package model;
 import java.util.ArrayList;
 
 public class Knight extends ChessPiece {
+
     public Knight(PieceColor color, int plus) {
         super(color, false, plus);
         this.type = "Knight";
@@ -46,4 +47,5 @@ public class Knight extends ChessPiece {
             out.add(new Pair<>(row+2, column+1));
         return out;
     }
+
 }
