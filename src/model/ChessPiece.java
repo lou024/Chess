@@ -9,9 +9,9 @@ abstract class ChessPiece {
     boolean firstMove;
     final int plus;
 
-    public ChessPiece(PieceColor color, boolean firstMove, int plus) {
+    public ChessPiece(PieceColor color, int plus) {
         this.color = color;
-        this.firstMove = firstMove;
+        this.firstMove = false;
         this.plus = plus;
     }
 

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Knight extends ChessPiece {
 
     public Knight(PieceColor color, int plus) {
-        super(color, false, plus);
+        super(color, plus);
         this.type = "Knight";
     }
 

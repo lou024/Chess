@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Pawn extends ChessPiece {
 
     public Pawn(PieceColor color, int plus) {
-        super(color, false, plus);
+        super(color, plus);
         this.type = "Pawn";
     }
 
