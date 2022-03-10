@@ -21,7 +21,7 @@ abstract class ChessPiece {
      * @param column on the board where piece is
      * @param plus is -1 if piece started from the bottom of the board
      * @param board 2d array representing chess board
-     * @return available moves for given piece OR 1 if piece started from the top of the board
+     * @return ArrayList of available moves for given piece OR 1 if piece started from the top of the board
      */
     public abstract ArrayList<Pair<Integer, Integer>> availableMoves(int row, int column, int plus, ChessCell[][] board);
 

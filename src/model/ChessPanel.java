@@ -52,7 +52,14 @@ public class ChessPanel extends JPanel {
         changeTurns();
     }
 
+    /**
+     * sets up board for game
+     */
     public void init() {
+        // set up kings
+        board[0][3].setPiece(new King(PieceColor.BLACK, 1));
+        board[7][3].setPiece(new King(PieceColor.WHITE, -1));
+
         // set up pawns
         for(ChessCell cell : board[1]) cell.setPiece(new Pawn(PieceColor.BLACK, 1));
         for(ChessCell cell : board[6]) cell.setPiece(new Pawn(PieceColor.WHITE, -1));
@@ -64,7 +71,6 @@ public class ChessPanel extends JPanel {
         board[0][6].setPiece(new Knight(PieceColor.BLACK, 1));
         board[0][2].setPiece(new Bishop(PieceColor.BLACK, 1));
         board[0][5].setPiece(new Bishop(PieceColor.BLACK, 1));
-        board[0][3].setPiece(new King(PieceColor.BLACK, 1));
         board[0][4].setPiece(new Queen(PieceColor.BLACK, 1));
 
         // set up white pieces
@@ -74,20 +80,19 @@ public class ChessPanel extends JPanel {
         board[7][6].setPiece(new Knight(PieceColor.WHITE, -1));
         board[7][2].setPiece(new Bishop(PieceColor.WHITE, -1));
         board[7][5].setPiece(new Bishop(PieceColor.WHITE, -1));
-        board[7][3].setPiece(new King(PieceColor.WHITE, -1));
         board[7][4].setPiece(new Queen(PieceColor.WHITE, -1));
 
         changeTurns();
     }
 
     private void changeTurns() {
-        for(int r = 0; r < board.length; r++) {
-            for(int c = 0; c < board[0].length; c++) {
-                if(blackTurn && board[r][c].pieceInCell != null
-                        && board[r][c].pieceInCell.color == PieceColor.BLACK) {
-                    board[r][c].setPiece = true;
-                } else board[r][c].setPiece = !blackTurn && board[r][c].pieceInCell != null
-                        && board[r][c].pieceInCell.color == PieceColor.WHITE;
+        for (ChessCell[] chessCells : board) {
+            for (int c = 0; c < board[0].length; c++) {
+                if (blackTurn && chessCells[c].pieceInCell != null
+                        && chessCells[c].pieceInCell.color == PieceColor.BLACK) {
+                    chessCells[c].setPiece = true;
+                } else chessCells[c].setPiece = !blackTurn && chessCells[c].pieceInCell != null
+                        && chessCells[c].pieceInCell.color == PieceColor.WHITE;
             }
         }
         blackTurn = !blackTurn;

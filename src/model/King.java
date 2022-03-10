@@ -34,4 +34,15 @@ public class King extends ChessPiece {
         return out;
     }
 
+    /**
+     * checks if king is in a valid position
+     * @param row on the board where king is/can be
+     * @param column on the board where king is/can be
+     * @return boolean which is true if and only if the king
+     */
+    private boolean validKingLocation(int row, int column) {
+
+        return true;
+    }
+
 }
