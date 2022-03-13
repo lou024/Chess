@@ -6,7 +6,7 @@ import java.awt.*;
 public class ControlPanel extends JPanel {
     public ControlPanel(ChessPanel chessPanel) {
         super(new GridBagLayout());
-        final JTextField inProgressText, inProgress, turn, player, selectedPieceText, selectedPiece;
+        final JTextField inProgressText, turn, player, selectedPieceText, selectedPiece;
         // set main frame
         final JButton newGame = new JButton("New Game");
         // shows whose turn it is
@@ -16,8 +16,6 @@ public class ControlPanel extends JPanel {
         // displays game status
         inProgressText = new JTextField("Game Status: ");
         inProgressText.setEditable(false);
-        inProgress = new JTextField("In Progress");
-        inProgress.setEditable(false);
         // displays selected chess piece
         selectedPieceText = new JTextField("Selected Chess Piece: ");
         selectedPieceText.setEditable(false);
@@ -46,7 +44,7 @@ public class ControlPanel extends JPanel {
         gbc.gridy = 1;
         gbc.insets.left = 1;
         gbc.insets.right = 10;
-        add(inProgress,gbc);
+        add(chessPanel.inProgress,gbc);
 
         gbc.gridx = 0;
         gbc.gridy = 2;

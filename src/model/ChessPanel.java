@@ -9,7 +9,9 @@ public class ChessPanel extends JPanel {
     ChessCell[][] board;
     ChessCell chosenCell;
     boolean blackTurn;
-    JTextField playerTurn, selectedPiece;
+    JTextField playerTurn, selectedPiece, inProgress;
+    King WHITE_KING, BLACK_KING;
+    Pair<Integer, Integer> WHITE_KING_POSITION, BLACK_KING_POSITION;
     public ChessPanel() {
         super(new GridLayout(8, 8));
         board = new ChessCell[8][8];
@@ -40,14 +42,19 @@ public class ChessPanel extends JPanel {
         playerTurn.setEditable(false);
         selectedPiece = new JTextField("none");
         selectedPiece.setEditable(false);
-
+        inProgress = new JTextField("In Progress");
+        inProgress.setEditable(false);
         testInit();
 //        init();
     }
 
     public void testInit() {
-        board[0][0].setPiece(new Queen(PieceColor.BLACK, 1));
-        board[4][4].setPiece(new King(PieceColor.WHITE, -1));
+        board[0][1].setPiece(new Queen(PieceColor.BLACK, 1));
+        board[0][5].setPiece(new Rook(PieceColor.BLACK, 1));
+
+        WHITE_KING = new King(PieceColor.WHITE, -1);
+        WHITE_KING_POSITION = new Pair<>(4, 4);
+        board[4][4].setPiece(WHITE_KING);
 
         changeTurns();
     }
@@ -57,7 +64,11 @@ public class ChessPanel extends JPanel {
      */
     public void init() {
         // set up kings
+        BLACK_KING = new King(PieceColor.BLACK, 1);
+        BLACK_KING_POSITION = new Pair<>(0, 0);
         board[0][3].setPiece(new King(PieceColor.BLACK, 1));
+        WHITE_KING = new King(PieceColor.WHITE, -1);
+        WHITE_KING_POSITION = new Pair<>(7, 3);
         board[7][3].setPiece(new King(PieceColor.WHITE, -1));
 
         // set up pawns
@@ -97,7 +108,12 @@ public class ChessPanel extends JPanel {
         }
         blackTurn = !blackTurn;
         if(!blackTurn) playerTurn.setText("Black");
-        else playerTurn.setText("White");
+        else {
+//            if(!King.validKingLocation(PieceColor.WHITE, WHITE_KING_POSITION.left, WHITE_KING_POSITION.right, board)) {
+//                inProgress.setText("CHECK");
+//            }
+            playerTurn.setText("White");
+        }
 
     }
 
@@ -107,6 +123,11 @@ public class ChessPanel extends JPanel {
                         .availableMoves(chosenCell.rowPosition, chosenCell.colPosition,chosenCell.pieceInCell.plus, board)
                 , new Pair<>(rowPosition, colPosition))) {
             System.out.println(chosenCell.pieceInCell.toString());
+            // update king positions
+            if(chosenCell.pieceInCell instanceof King) {
+                if(chosenCell.pieceInCell.color == PieceColor.WHITE) WHITE_KING_POSITION = new Pair<>(rowPosition, colPosition);
+                else BLACK_KING_POSITION = new Pair<>(rowPosition, colPosition);
+            }
             chosenCell.movePiece(board[rowPosition][colPosition]);
             chosenCell = null;
             selectedPiece.setText("none");
