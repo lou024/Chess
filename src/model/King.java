@@ -83,7 +83,7 @@ public class King extends ChessPiece {
         // diagonal right-up
         for(int i = 1; i < 8 && row-i >= 0 && column+i <= 7; i++) {
             if(board[row-i][column+i].pieceInCell == null || color != board[row-i][column+i].pieceInCell.color) {
-                if(board[row-i][column+i].pieceInCell != null && (board[row-i][column-i].pieceInCell instanceof Queen || board[row-i][column-i].pieceInCell instanceof Bishop)) return false;
+                if(board[row-i][column+i].pieceInCell != null && (board[row-i][column+i].pieceInCell instanceof Queen || board[row-i][column+i].pieceInCell instanceof Bishop)) return false;
             } else break;
         }
         // diagonal left-down
