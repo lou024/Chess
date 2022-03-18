@@ -108,12 +108,10 @@ public class ChessPanel extends JPanel {
         }
         blackTurn = !blackTurn;
         if(!blackTurn) playerTurn.setText("Black");
-        else {
-//            if(!King.validKingLocation(PieceColor.WHITE, WHITE_KING_POSITION.left, WHITE_KING_POSITION.right, board)) {
-//                inProgress.setText("CHECK");
-//            }
-            playerTurn.setText("White");
-        }
+        else playerTurn.setText("White");
+//        if(!King.validKingLocation(PieceColor.WHITE, WHITE_KING_POSITION.left, WHITE_KING_POSITION.right, board)) {
+//          inProgress.setText("CHECK");
+//        }
 
     }
 
