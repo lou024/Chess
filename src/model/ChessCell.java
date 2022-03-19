@@ -27,9 +27,9 @@ public class ChessCell extends JButton {
                 Icon ic;
                 Image imageIcon;
                 if(piece.color == PieceColor.WHITE){
-                    imageIcon = new ImageIcon(CURRENT_DIRECTORY + "./src/icons/white_pawn.png").getImage().getScaledInstance(75, 75, Image.SCALE_SMOOTH);
+                    imageIcon = new ImageIcon(CURRENT_DIRECTORY + "/src/icons/white_pawn.png").getImage().getScaledInstance(75, 75, Image.SCALE_SMOOTH);
                 }else {
-                    imageIcon = new ImageIcon(CURRENT_DIRECTORY + "./src/icons/black_pawn.png").getImage().getScaledInstance(75, 75, Image.SCALE_SMOOTH);
+                    imageIcon = new ImageIcon(CURRENT_DIRECTORY + "/src/icons/black_pawn.png").getImage().getScaledInstance(75, 75, Image.SCALE_SMOOTH);
                 }
                 ic = new ImageIcon(imageIcon);
                 super.setIcon(ic);
@@ -39,9 +39,9 @@ public class ChessCell extends JButton {
                 Icon ic;
                 Image imageIcon;
                 if(piece.color == PieceColor.WHITE){
-                    imageIcon = new ImageIcon(CURRENT_DIRECTORY + "./src/icons/white_bishop.png").getImage().getScaledInstance(65, 65, Image.SCALE_SMOOTH);
+                    imageIcon = new ImageIcon(CURRENT_DIRECTORY + "/src/icons/white_bishop.png").getImage().getScaledInstance(65, 65, Image.SCALE_SMOOTH);
                 }else {
-                    imageIcon = new ImageIcon(CURRENT_DIRECTORY + "./src/icons/black_bishop.png").getImage().getScaledInstance(65, 65, Image.SCALE_SMOOTH);
+                    imageIcon = new ImageIcon(CURRENT_DIRECTORY + "/src/icons/black_bishop.png").getImage().getScaledInstance(65, 65, Image.SCALE_SMOOTH);
                 }
                 ic = new ImageIcon(imageIcon);
                 super.setIcon(ic);
@@ -51,9 +51,9 @@ public class ChessCell extends JButton {
                 Icon ic;
                 Image imageIcon;
                 if(piece.color == PieceColor.WHITE) {
-                    imageIcon = new ImageIcon(CURRENT_DIRECTORY + "./src/icons/white_knight.png").getImage().getScaledInstance(65, 65, Image.SCALE_SMOOTH);
+                    imageIcon = new ImageIcon(CURRENT_DIRECTORY + "/src/icons/white_knight.png").getImage().getScaledInstance(65, 65, Image.SCALE_SMOOTH);
                 }else {
-                    imageIcon = new ImageIcon(CURRENT_DIRECTORY + "./src/icons/black_knight.png").getImage().getScaledInstance(65, 65, Image.SCALE_SMOOTH);
+                    imageIcon = new ImageIcon(CURRENT_DIRECTORY + "/src/icons/black_knight.png").getImage().getScaledInstance(65, 65, Image.SCALE_SMOOTH);
                 }
                 ic = new ImageIcon(imageIcon);
                 super.setIcon(ic);
@@ -63,9 +63,9 @@ public class ChessCell extends JButton {
                 Icon ic;
                 Image imageIcon;
                 if(piece.color == PieceColor.WHITE){
-                    imageIcon = new ImageIcon(CURRENT_DIRECTORY + "./src/icons/white_rook.png").getImage().getScaledInstance(65, 65, Image.SCALE_SMOOTH);
+                    imageIcon = new ImageIcon(CURRENT_DIRECTORY + "/src/icons/white_rook.png").getImage().getScaledInstance(65, 65, Image.SCALE_SMOOTH);
                 }else {
-                    imageIcon = new ImageIcon(CURRENT_DIRECTORY + "./src/icons/black_rook.png").getImage().getScaledInstance(65, 65, Image.SCALE_SMOOTH);
+                    imageIcon = new ImageIcon(CURRENT_DIRECTORY + "/src/icons/black_rook.png").getImage().getScaledInstance(65, 65, Image.SCALE_SMOOTH);
                 }
                 ic = new ImageIcon(imageIcon);
                 super.setIcon(ic);
@@ -75,9 +75,9 @@ public class ChessCell extends JButton {
                 Icon ic;
                 Image imageIcon;
                 if(piece.color == PieceColor.WHITE) {
-                    imageIcon = new ImageIcon(CURRENT_DIRECTORY + "./src/icons/white_king.png").getImage().getScaledInstance(65, 65, Image.SCALE_SMOOTH);
+                    imageIcon = new ImageIcon(CURRENT_DIRECTORY + "/src/icons/white_king.png").getImage().getScaledInstance(65, 65, Image.SCALE_SMOOTH);
                 }else {
-                    imageIcon = new ImageIcon(CURRENT_DIRECTORY + "./src/icons/black_king.png").getImage().getScaledInstance(65, 65, Image.SCALE_SMOOTH);
+                    imageIcon = new ImageIcon(CURRENT_DIRECTORY + "/src/icons/black_king.png").getImage().getScaledInstance(65, 65, Image.SCALE_SMOOTH);
                 }
                 ic = new ImageIcon(imageIcon);
                 super.setIcon(ic);
@@ -87,9 +87,9 @@ public class ChessCell extends JButton {
                 Icon ic;
                 Image imageIcon;
                 if(piece.color == PieceColor.WHITE){
-                    imageIcon = new ImageIcon(CURRENT_DIRECTORY + "./src/icons/white_queen.png").getImage().getScaledInstance(65, 65, Image.SCALE_SMOOTH);
+                    imageIcon = new ImageIcon(CURRENT_DIRECTORY + "/src/icons/white_queen.png").getImage().getScaledInstance(65, 65, Image.SCALE_SMOOTH);
                 }else {
-                    imageIcon = new ImageIcon(CURRENT_DIRECTORY + "./src/icons/black_queen.png").getImage().getScaledInstance(65, 65, Image.SCALE_SMOOTH);
+                    imageIcon = new ImageIcon(CURRENT_DIRECTORY + "/src/icons/black_queen.png").getImage().getScaledInstance(65, 65, Image.SCALE_SMOOTH);
                 }
                 ic = new ImageIcon(imageIcon);
                 super.setIcon(ic);
