@@ -50,6 +50,7 @@ public class King extends ChessPiece {
      * @return boolean which is true if and only if the king
      */
     public static boolean validKingLocation(PieceColor color, int row, int column, ChessCell[][] board) {
+        // QUEEN/BISHOP check
         // straight down
         for(int i = 1; i < 8 && row+i <= 7; i++){
             if(board[row+i][column].pieceInCell == null || color != board[row+i][column].pieceInCell.color) {
@@ -132,7 +133,16 @@ public class King extends ChessPiece {
             }
         }
 
-        // pawn checks
+        // knight check
+
+        // pawn check
+        int plus = color == PieceColor.BLACK ? 1:-1;
+        if((row+plus >= 0 && row+plus <= 7 && column-1 >= 0
+                && board[row+plus][column-1].pieceInCell != null
+                && color != board[row+plus][column-1].pieceInCell.color)
+            || (row+plus >= 0 && row+plus <= 7 && column+1 <= 7
+                && board[row+plus][column+1].pieceInCell != null
+                && color != board[row+plus][column+1].pieceInCell.color))return false;
         return true;
     }
 
