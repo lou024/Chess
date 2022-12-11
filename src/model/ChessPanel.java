@@ -49,8 +49,8 @@ public class ChessPanel extends JPanel {
     }
 
     public void testInit() {
-        board[0][1].setPiece(new Queen(PieceColor.BLACK, 1));
-        board[0][5].setPiece(new Rook(PieceColor.BLACK, 1));
+        board[4][0].setPiece(new Queen(PieceColor.BLACK, 1));
+        board[4][1].setPiece(new Pawn(PieceColor.BLACK, 1));
 
         WHITE_KING = new King(PieceColor.WHITE, -1);
         WHITE_KING_POSITION = new Pair<>(4, 4);
@@ -182,7 +182,8 @@ public class ChessPanel extends JPanel {
         selectedPiece.setText("none");
         blackTurn = false;
         chosenCell = null;
-        init();
+//        init();
+        testInit();
         unhighlight();
     }
 }
