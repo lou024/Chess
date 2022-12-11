@@ -50,11 +50,11 @@ public class ChessPanel extends JPanel {
 
     public void testInit() {
         //board[4][0].setPiece(new Queen(PieceColor.BLACK, 1));
-        board[2][1].setPiece(new Pawn(PieceColor.BLACK, 1));
+        board[1][3].setPiece(new Knight(PieceColor.BLACK, 1));
 
         WHITE_KING = new King(PieceColor.WHITE, -1);
-        WHITE_KING_POSITION = new Pair<>(4, 4);
-        board[4][4].setPiece(WHITE_KING);
+        WHITE_KING_POSITION = new Pair<>(4, 3);
+        board[4][3].setPiece(WHITE_KING);
 
         changeTurns();
     }

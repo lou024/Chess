@@ -50,7 +50,7 @@ public class King extends ChessPiece {
      * @return boolean which is true if and only if the king
      */
     public static boolean validKingLocation(PieceColor color, int row, int column, ChessCell[][] board) {
-        // QUEEN/BISHOP check
+        // QUEEN/BISHOP/ROOK check
         // straight down
         for(int i = 1; i < 8 && row+i <= 7; i++){
             if(board[row+i][column].pieceInCell == null || color != board[row+i][column].pieceInCell.color) {
@@ -91,7 +91,6 @@ public class King extends ChessPiece {
                 }
             }
         }
-
         // diagonal left-up
         for(int i = 1; i < 8 && row-i >= 0 && column-i >= 0; i++) {
             if(board[row-i][column-i].pieceInCell == null || color != board[row-i][column-i].pieceInCell.color) {
@@ -133,16 +132,58 @@ public class King extends ChessPiece {
             }
         }
 
-        // knight check
+        // KNIGHT check
+        if(row-2 >= 0 && column-1 >= 0
+                && (board[row-2][column-1].pieceInCell != null
+                && color != board[row-2][column-1].pieceInCell.color
+                && board[row-2][column-1].pieceInCell instanceof Knight))
+            return false;
+        if(row-2 >= 0 && column+1 <= 7
+                && (board[row-2][column+1].pieceInCell != null
+                && color != board[row-2][column+1].pieceInCell.color
+                && board[row-2][column+1].pieceInCell instanceof Knight))
+            return false;
+        if(row-1 >= 0 && column-2 >= 0
+                && (board[row-1][column-2].pieceInCell != null
+                && color != board[row-1][column-2].pieceInCell.color
+                && board[row-1][column-2].pieceInCell instanceof Knight))
+            return false;
+        if(row+1 <= 7 && column-2 >= 0
+                && (board[row+1][column-2].pieceInCell != null
+                && color != board[row+1][column-2].pieceInCell.color
+                && board[row+1][column-2].pieceInCell instanceof Knight))
+            return false;
 
-        // pawn check
+        if(row-1 >= 0 && column+2 <= 7
+                && (board[row-1][column+2].pieceInCell != null
+                && color != board[row-1][column+2].pieceInCell.color
+                && board[row-1][column+2].pieceInCell instanceof Knight))
+            return false;
+        if(row+1 <= 7 && column+2 <= 7
+                && (board[row+1][column+2].pieceInCell != null
+                && color != board[row+1][column+2].pieceInCell.color
+                && board[row+1][column+2].pieceInCell instanceof Knight))
+            return false;
+        if(row+2 <= 7 && column-1 >= 0
+                && (board[row+2][column-1].pieceInCell != null
+                && color != board[row+2][column-1].pieceInCell.color
+                && board[row+2][column-1].pieceInCell instanceof Knight))
+            return false;
+        if(row+2 <= 7 && column+1 <= 7
+                && (board[row+2][column+1].pieceInCell != null
+                && color != board[row+2][column+1].pieceInCell.color
+                && board[row+2][column+1].pieceInCell instanceof Knight))
+            return false;
+        // PAWN check
         int plus = color == PieceColor.BLACK ? 1:-1;
         if((row+plus >= 0 && row+plus <= 7 && column-1 >= 0
                 && board[row+plus][column-1].pieceInCell != null
-                && color != board[row+plus][column-1].pieceInCell.color)
+                && color != board[row+plus][column-1].pieceInCell.color
+                && (board[row+plus][column-1].pieceInCell instanceof Pawn || board[row+plus][column-1].pieceInCell instanceof King))
             || (row+plus >= 0 && row+plus <= 7 && column+1 <= 7
                 && board[row+plus][column+1].pieceInCell != null
-                && color != board[row+plus][column+1].pieceInCell.color))return false;
+                && color != board[row+plus][column+1].pieceInCell.color
+                && (board[row+plus][column+1].pieceInCell instanceof Pawn || board[row+plus][column+1].pieceInCell instanceof King)))return false;
         return true;
     }
 
