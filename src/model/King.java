@@ -59,7 +59,7 @@ public class King extends ChessPiece {
                         return false;
                     else break;
                 }
-            }
+            } else if(board[row + i][column].pieceInCell != null && !(board[row + i][column].pieceInCell instanceof King)) break;
         }
         // straight up
         for(int i = 1; i < 8 && row-i >= 0; i++){
@@ -69,7 +69,7 @@ public class King extends ChessPiece {
                         return false;
                     else break;
                 }
-            }
+            } else if (board[row-i][column].pieceInCell != null && !(board[row-i][column].pieceInCell instanceof King)) break;
         }
         // straight left
         for(int i = 1; i < 8 && column-i >= 0; i++){
@@ -79,7 +79,7 @@ public class King extends ChessPiece {
                         return false;
                     else break;
                 }
-            }
+            } else if(board[row][column-i].pieceInCell != null && !(board[row][column-i].pieceInCell instanceof King)) break;
         }
         // straight right
         for(int i = 1; i < 8 && column+i <= 7; i++){
@@ -89,7 +89,7 @@ public class King extends ChessPiece {
                         return false;
                     else break;
                 }
-            }
+            } else if(board[row][column+i].pieceInCell != null && !(board[row][column+i].pieceInCell instanceof King)) break;
         }
         // diagonal left-up
         for(int i = 1; i < 8 && row-i >= 0 && column-i >= 0; i++) {
