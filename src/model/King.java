@@ -55,17 +55,17 @@ public class King extends ChessPiece {
         for(int i = 1; i < 8 && row+i <= 7; i++){
             if(board[row+i][column].pieceInCell == null || color != board[row+i][column].pieceInCell.color) {
                 if(board[row+i][column].pieceInCell != null) {
-                    if (board[row + i][column].pieceInCell instanceof Queen || board[row + i][column].pieceInCell instanceof Rook)
+                    if (board[row+i][column].pieceInCell instanceof Queen || board[row+i][column].pieceInCell instanceof Rook)
                         return false;
                     else break;
                 }
-            } else if(board[row + i][column].pieceInCell != null && !(board[row + i][column].pieceInCell instanceof King)) break;
+            } else if(board[row+i][column].pieceInCell != null && !(board[row+i][column].pieceInCell instanceof King)) break;
         }
         // straight up
         for(int i = 1; i < 8 && row-i >= 0; i++){
             if(board[row-i][column].pieceInCell == null || color != board[row-i][column].pieceInCell.color) {
                 if(board[row-i][column].pieceInCell != null) {
-                    if (board[row - i][column].pieceInCell instanceof Queen || board[row - i][column].pieceInCell instanceof Rook)
+                    if (board[row-i][column].pieceInCell instanceof Queen || board[row-i][column].pieceInCell instanceof Rook)
                         return false;
                     else break;
                 }
@@ -75,7 +75,7 @@ public class King extends ChessPiece {
         for(int i = 1; i < 8 && column-i >= 0; i++){
             if(board[row][column-i].pieceInCell == null || color != board[row][column-i].pieceInCell.color) {
                 if(board[row][column-i].pieceInCell != null) {
-                    if (board[row][column - i].pieceInCell instanceof Queen || board[row][column - i].pieceInCell instanceof Rook)
+                    if (board[row][column-i].pieceInCell instanceof Queen || board[row][column-i].pieceInCell instanceof Rook)
                         return false;
                     else break;
                 }
@@ -85,7 +85,7 @@ public class King extends ChessPiece {
         for(int i = 1; i < 8 && column+i <= 7; i++){
             if(board[row][column+i].pieceInCell == null || color != board[row][column+i].pieceInCell.color) {
                 if(board[row][column+i].pieceInCell != null) {
-                    if (board[row][column + i].pieceInCell instanceof Queen || board[row][column + i].pieceInCell instanceof Rook)
+                    if (board[row][column+i].pieceInCell instanceof Queen || board[row][column+i].pieceInCell instanceof Rook)
                         return false;
                     else break;
                 }
@@ -94,42 +94,42 @@ public class King extends ChessPiece {
         // diagonal left-up
         for(int i = 1; i < 8 && row-i >= 0 && column-i >= 0; i++) {
             if(board[row-i][column-i].pieceInCell == null || color != board[row-i][column-i].pieceInCell.color) {
-                if (board[row - i][column - i].pieceInCell != null) {
-                    if (board[row - i][column - i].pieceInCell instanceof Queen || board[row - i][column - i].pieceInCell instanceof Bishop)
+                if (board[row-i][column-i].pieceInCell != null) {
+                    if (board[row-i][column-i].pieceInCell instanceof Queen || board[row-i][column-i].pieceInCell instanceof Bishop)
                         return false;
                     else break;
                 }
-            }
+            } else if(board[row-i][column-i].pieceInCell != null && !(board[row-i][column-i].pieceInCell instanceof King)) break;
         }
         // diagonal right-up
         for(int i = 1; i < 8 && row-i >= 0 && column+i <= 7; i++) {
             if(board[row-i][column+i].pieceInCell == null || color != board[row-i][column+i].pieceInCell.color) {
                 if(board[row-i][column+i].pieceInCell != null) {
-                    if (board[row - i][column + i].pieceInCell instanceof Queen || board[row - i][column + i].pieceInCell instanceof Bishop)
+                    if (board[row-i][column+i].pieceInCell instanceof Queen || board[row-i][column+i].pieceInCell instanceof Bishop)
                         return false;
                     else break;
                 }
-            }
+            } else if(board[row-i][column+i].pieceInCell != null && !(board[row-i][column+i].pieceInCell instanceof King)) break;
         }
         // diagonal left-down
         for(int i = 1; i < 8 && row+i <= 7 && column-i >= 0; i++) {
             if(board[row+i][column-i].pieceInCell == null || color != board[row+i][column-i].pieceInCell.color) {
                 if(board[row+i][column-i].pieceInCell != null) {
-                    if (board[row + i][column - i].pieceInCell instanceof Queen || board[row + i][column - i].pieceInCell instanceof Bishop)
+                    if (board[row+i][column-i].pieceInCell instanceof Queen || board[row+i][column-i].pieceInCell instanceof Bishop)
                         return false;
                     else break;
                 }
-            }
+            } else if(board[row+i][column-i].pieceInCell != null && !(board[row+i][column-i].pieceInCell instanceof King)) break;
         }
         // diagonal right-down
         for(int i = 1; i < 8 && row+i <= 7 && column+i <= 7; i++) {
             if(board[row+i][column+i].pieceInCell == null || color != board[row+i][column+i].pieceInCell.color) {
                 if(board[row+i][column+i].pieceInCell != null) {
-                    if (board[row + i][column + i].pieceInCell instanceof Queen || board[row + i][column + i].pieceInCell instanceof Bishop)
+                    if (board[row+i][column +i].pieceInCell instanceof Queen || board[row+i][column+i].pieceInCell instanceof Bishop)
                         return false;
                     else break;
                 }
-            }
+            }else if(board[row+i][column+i].pieceInCell != null && !(board[row+i][column+i].pieceInCell instanceof King)) break;
         }
 
         // KNIGHT check
