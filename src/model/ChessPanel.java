@@ -49,14 +49,11 @@ public class ChessPanel extends JPanel {
     }
 
     public void testInit() {
-        board[4][0].setPiece(new Queen(PieceColor.BLACK, 1));
-        board[4][1].setPiece(new Knight(PieceColor.WHITE, -1));
+        board[1][6].setPiece(new Pawn(PieceColor.BLACK, 1));
+        board[3][7].setPiece(new Pawn(PieceColor.WHITE, -1));
+        board[3][5].setPiece(new Pawn(PieceColor.WHITE, -1));
 
-        WHITE_KING = new King(PieceColor.WHITE, -1);
-        WHITE_KING_POSITION = new Pair<>(4, 3);
-        board[4][3].setPiece(WHITE_KING);
-
-        changeTurns();
+        changeTurns();changeTurns();
     }
 
     /**
@@ -120,13 +117,39 @@ public class ChessPanel extends JPanel {
                 && pairExistsInList(chosenCell.pieceInCell
                         .availableMoves(chosenCell.rowPosition, chosenCell.colPosition,chosenCell.pieceInCell.plus, board)
                 , new Pair<>(rowPosition, colPosition))) {
-            System.out.println(chosenCell.pieceInCell.toString());
             // update king positions
             if(chosenCell.pieceInCell instanceof King) {
                 if(chosenCell.pieceInCell.color == PieceColor.WHITE) WHITE_KING_POSITION = new Pair<>(rowPosition, colPosition);
                 else BLACK_KING_POSITION = new Pair<>(rowPosition, colPosition);
             }
+            // update enPassant rule variable then move piece
+            if(chosenCell.pieceInCell instanceof Pawn
+                    && (chosenCell.rowPosition == rowPosition+2 || chosenCell.rowPosition == rowPosition-2)) {
+                if(colPosition + 1 <= 7 && board[rowPosition][colPosition+1].pieceInCell != null
+                        && board[rowPosition][colPosition+1].pieceInCell instanceof Pawn
+                        && board[rowPosition][colPosition+1].pieceInCell.color != chosenCell.pieceInCell.color) {
+//                    System.out.println("EN PASSANT HERE: " + rowPosition + ", " + (colPosition+1));
+                    board[rowPosition][colPosition+1].pieceInCell.updateEnPassant_RIGHT();
+                }
+                if(colPosition - 1 >= 0 && board[rowPosition][colPosition-1].pieceInCell != null
+                        && board[rowPosition][colPosition-1].pieceInCell instanceof Pawn
+                        && board[rowPosition][colPosition-1].pieceInCell.color != chosenCell.pieceInCell.color) {
+//                    System.out.println("EN PASSANT HERE: " + rowPosition + ", " + (colPosition-1));
+                    board[rowPosition][colPosition-1].pieceInCell.updateEnPassant_LEFT();
+                }
+            }
+            // capture pawn and set to NULL that triggered EnPassant
+            int plusValue = chosenCell.pieceInCell.plus;
+            if(chosenCell.pieceInCell.enPassant_LEFT && rowPosition == chosenCell.rowPosition+plusValue
+                    && colPosition == chosenCell.colPosition+1) {
+                clearChessCell(board[chosenCell.rowPosition][chosenCell.colPosition+1]);
+            }
+            if(chosenCell.pieceInCell.enPassant_RIGHT && rowPosition == chosenCell.rowPosition+plusValue
+                    && colPosition == chosenCell.colPosition-1) {
+                clearChessCell(board[chosenCell.rowPosition][chosenCell.colPosition-1]);
+            }
             chosenCell.movePiece(board[rowPosition][colPosition]);
+            clearEnPassantRule(board[rowPosition][colPosition].pieceInCell.color);
             chosenCell = null;
             selectedPiece.setText("none");
             changeTurns();
@@ -142,6 +165,26 @@ public class ChessPanel extends JPanel {
             }
 
         }
+    }
+
+    /**
+     * set EnPassant boolean to false for all Pawns of given color
+     * @param color of chess pieces to clear
+     */
+    private void clearEnPassantRule(PieceColor color) {
+        for(ChessCell[] cells : board) {
+            for(ChessCell c : cells) {
+                if (c.pieceInCell != null && c.pieceInCell.color == color && c.pieceInCell instanceof Pawn) {
+                    if(c.pieceInCell.enPassant_LEFT) c.pieceInCell.updateEnPassant_LEFT();
+                    if(c.pieceInCell.enPassant_RIGHT) c.pieceInCell.updateEnPassant_RIGHT();
+                }
+            }
+        }
+    }
+
+    private void clearChessCell(ChessCell toClear) {
+        toClear.pieceInCell = null;
+        toClear.setIcon(null);
     }
 
     public boolean pairExistsInList(ArrayList<Pair<Integer, Integer>> list, Pair<Integer, Integer> pair) {

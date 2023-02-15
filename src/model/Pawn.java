@@ -10,6 +10,16 @@ public class Pawn extends ChessPiece {
     }
 
     @Override
+    public void updateEnPassant_LEFT() {
+        this.enPassant_LEFT = !enPassant_LEFT;
+    }
+
+    @Override
+    public void updateEnPassant_RIGHT() {
+        this.enPassant_RIGHT = !enPassant_RIGHT;
+    }
+
+    @Override
     public ArrayList<Pair<Integer, Integer>> availableMoves(int row, int column, int plus, ChessCell[][] board) {
         ArrayList<Pair<Integer, Integer>> out = new ArrayList<>();
         if(row+plus >=0 && row+plus <= 7 && board[row+plus][column].pieceInCell == null) {
@@ -22,6 +32,12 @@ public class Pawn extends ChessPiece {
         if(row+plus >= 0 && row+plus <= 7 && column+1 <= 7
                 && board[row+plus][column+1].pieceInCell != null
                 && color != board[row+plus][column+1].pieceInCell.color)out.add(new Pair<>(row+plus, column+1));
+        if(enPassant_RIGHT) {
+            out.add(new Pair<>(row+plus, column-1));
+        }
+        if(enPassant_LEFT) {
+            out.add(new Pair<>(row+plus, column+1));
+        }
         return out;
     }
 

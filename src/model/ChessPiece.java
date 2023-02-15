@@ -7,12 +7,24 @@ abstract class ChessPiece {
     String type;
     PieceColor color;
     boolean firstMove;
+    boolean enPassant_LEFT;
+    boolean enPassant_RIGHT;
     final int plus;
 
     public ChessPiece(PieceColor color, int plus) {
         this.color = color;
         this.firstMove = false;
         this.plus = plus;
+        this.enPassant_LEFT = false;
+        this.enPassant_RIGHT = false;
+    }
+
+    public void updateEnPassant_LEFT() {
+
+    }
+
+    public void updateEnPassant_RIGHT() {
+
     }
 
     /**
