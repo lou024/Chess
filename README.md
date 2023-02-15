@@ -1,6 +1,6 @@
 # Chess
 ## Simple Java implementation of Chess
-This started as a fun project because I've always found Chess interesting. This entire project is in Java, using JavaFX for the UI.
+This started as a fun project because I've always found Chess interesting.
 
 ### To run this program:
 1. Clone the repository / Pull this repository
